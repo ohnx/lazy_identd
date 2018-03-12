@@ -78,7 +78,7 @@ void *reply(void *args) {
 
 int main(int argc, char **argv) {
     int sock, csock, *c;
-    struct sockaddr_in server;
+    struct sockaddr_in6 server;
     pthread_attr_t attr;
     pthread_t thread;
 
@@ -94,11 +94,11 @@ int main(int argc, char **argv) {
     printf("Using ident %s\n", ident);
 
     /* socket setup */
-    sock = socket(AF_INET, SOCK_STREAM, 0);
+    sock = socket(AF_INET6, SOCK_STREAM, 0);
     failif(sock < 0, "Failed to create socket");
-    server.sin_family = AF_INET;
-    server.sin_addr.s_addr = INADDR_ANY;
-    server.sin_port = htons(113);
+    server.sin6_family = AF_INET6;
+    server.sin6_addr = in6addr_any;
+    server.sin6_port = htons(113);
 
     /* bind */
     failif(

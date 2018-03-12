@@ -1,4 +1,4 @@
-CFLAGS=-Wall -Werror -pedantic -ansi -lpthread
+CFLAGS=-Wall -Werror -pedantic -ansi -lpthread -pthread
 
 all:
 	$(CC) $(CFLAGS) identd.c -o identd
